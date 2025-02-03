@@ -1,0 +1,10 @@
+footer{
+    padding-top: 20px;
+    display: flex;
+    height: 50px;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+    color: aliceblue;
+    
+}

@@ -1,0 +1,11 @@
+header{
+    display: flex;
+    width: auto;
+    height: 200px;
+    background-image:url("./Header.jpg");
+    align-items: center;
+    justify-content: center;
+    color: aliceblue;
+    flex-direction: column;
+    
+}

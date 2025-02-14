@@ -1,53 +1,50 @@
 import { useState } from "react";
 import "./Formulario.css"
+import Swal from 'sweetalert2'
 
 const FormularioRegistro = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordtrue, setPasswordtrue] = useState("");
-  const [error, setError] = useState(false)
-  const [errorpass, setErrorPass] = useState(false)
-  const [errorlength, setErrorLength] = useState(false)
-  const [pass, setPass] = useState(false)
-
 
 
   const validarDatos = (e) => {
     e.preventDefault()
     
     if(email === '' || password === ''  || passwordtrue === '' ) {
-        setError(true)
-        setErrorPass(false)
-        setPass(false)
-        setErrorLength(false)
+        Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Los campos son obligatorios!"
+      });
         return
     } else if (password !== passwordtrue ){
-      console.log(password)
-      console.log(passwordtrue)
-      setErrorPass(true)
-      setError(false)
-      setPass(false)
-      setErrorLength(false)
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Las contraseñas no coinciden!"
+      });
+
       return
     }else if(password.length<6  || passwordtrue.length<6){
-      setErrorLength(true)
-      setErrorPass(false)
-      setError(false)
-      setPass(false)
+      Swal.fire({title: 'Error!',
+        text: 'Contraseña de minimo 6 caracteres!',
+        icon: 'error'})
       return
     }else if (password === passwordtrue && password.length>5 ){
-      setPass(true)
-      setErrorPass(false)
-      setError(false)
-      setErrorLength(false)
+     
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Tu cuenta a sido creada!",
+        showConfirmButton: false,
+        timer: 1500
+      });
       setEmail('')
       setPassword('')
       setPasswordtrue('')
       return
     }
-    setError(false)
-    setErrorPass(false)
-    setErrorLength(false)
     setEmail('')
     setPassword('')
     setPasswordtrue('')
@@ -56,12 +53,7 @@ const FormularioRegistro = () => {
   return (
     <><div className="divFormulario">
      <form className="formulario  col-10" onSubmit={validarDatos}>
-        {error ? <p>Todos los campos son obligatorios</p> : null}
-        {errorpass ? <p>Contraseña no coincide</p> : null}
-        {pass ? <p>Felicidades su cuenta a sido creada!</p> : null}
-        {errorlength ? <p>Contraseña debe contener minimo 6 caracteres</p> : null}
-      
-        
+
         
         <div className="form-group ">
           <label>Email</label>

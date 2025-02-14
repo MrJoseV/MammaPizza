@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Formulario.css"
+import Swal from 'sweetalert2'
 
 const Formulariologin = () => {
   const [email, setEmail] = useState("");
@@ -14,25 +15,28 @@ const Formulariologin = () => {
     e.preventDefault()
     
     if(email === '' || password === '' ) {
-        setError(true)
-        setErrorPass(false)
-        setPass(false)
+        Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Los campos son obligatorios!"
+      });
         return
     } 
     else if (password.length<6){
-      setErrorPass(true)
-      setError(false)
-      setPass(false)
-    
+        Swal.fire({title: 'Error!',
+        text: 'Contraseña de minimo 6 caracteres!',
+        icon: 'error'})
       return
     }else{
-      setPass(true)
-      setErrorPass(false)
-      setError(false)
-      
+      Swal.fire({
+        title: "Bienvenideee a mama pizza!!",
+        text: "Bienvenido!",
+        imageUrl: "https://www.nicepng.com/png/detail/148-1483364_pizza-steve-png-clip-art-stock-slice-of.png",
+        imageWidth: 400,
+        imageHeight: 300,
+        imageAlt: "Pizza Steve"
+      });
     }
-    setError(false)
-    setErrorPass(false)
     setEmail('')
     setPassword('')
   }
@@ -40,10 +44,6 @@ const Formulariologin = () => {
   return (
     <><div className="divFormulario">
      <form className="formulario  col-10" onSubmit={validarDatos}>
-        {error ? <p>Todos los campos son obligatorios</p> : null}
-        {errorpass ? <p>Contraseña menor a 6 caracteres</p> : null}
-        {pass ? <p>Datos Enviados!</p> : null}
-        
         
         <div className="form-group ">
           <label>Email</label>

@@ -1,9 +1,10 @@
 import Profile from "./Profile";
+import PizzaCart from "./PizzaCart";
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 
 const Navbar = () => {
-  const total = 25000;
   const token = false;
+  const total=25000;
   return (
     <>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
@@ -15,17 +16,18 @@ const Navbar = () => {
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
-    
       </li>
       <Profile />
-     
     </ul>
-    <div class="justify-content-around">
-   
-    <span class="m-4 " >Total: {"$ "+ new Intl.NumberFormat('de-DE').format(total)}</span>
-  
+    <div class="d-inline-flex align-items-center">
+    <li class="d-inline-flex align-items-center">
+        <a class="nav-link  m-2 navbar-brand" href="/cart">🛒 Carrito</a>  
+    </li> 
+    <li>
+      {/**<span class="m-2 navbar-brand " >Total: {"$ "+ new Intl.NumberFormat('de-DE').format(total)}</span>
+    */} 
+    </li>
     </div>
-   
   </div>
 </nav>
     </>

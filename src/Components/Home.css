@@ -1,6 +1,19 @@
 .bodyHome{
     display: flex;
-    width: 100%;
+    min-width: 100%;
     justify-content: center;
     align-items: center;
+}
+
+.pizzas{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+    justify-content: space-evenly;
+}
+.listaPizza>img{
+    border-radius: 8px;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
 }
